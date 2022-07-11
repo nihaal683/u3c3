@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      #navbar{
+        display:flex;
+        gap:20px;
+        text-align:right;
+      }
+      #hotels-list{
+        margin :auto;
+        display:grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: auto;
+        gap:20px;
+  
+      }
+      #hotels-list>.hotel{
+        border:1px solid black;
+        height:auto;
+        width:100%;
+        text-align: left;
+        
+      }
+      img{
+        height:50%;
+        width:100%
+      }
+  
+    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="navbar">
+      <h2>Hotel App</h2>
+      <input type="text" placeholder="Search Hotels" id="query" onkeypress="enter(event)"> == $0
+      <div id="login-signup">
+        <a href="./login.html" id="logIn">Log-In</a>
+        <a href="./signup.html" id="signup">Sign-Up</a>
+      </div>
+      <!-- the search-box id:- "query"
+ - the log-in and sign-up link will have ids:- "login" and "signup" -->
+    </div>
+    <div id="sorting">
+      <button id="sort_lth" onclick="sortLTH()">Price Low to High</button>
+      <button id="sort_htl" onclick="sortHTL()">Price High to Low</button>
+      <button id="filter_ac" onclick="filterAC()">AC</button>
+      <button id="filter_nonac" onclick="filterNonAC">Non AC</button>
+      <!-- sort by price low to high Id:- "sort_lth"
+ - sort by price high to low Id:- "sort_htl"
+ - Filter Ac hotels Id:- "filter_ac"
+ - Filter Non Ac hotels Id:- "filter_nonac" -->
+    </div>
+    <div id="text"></div>
+    <div id="hotels-list">
+      <div class="hotel">
+        <img src="https://r1imghtlak.mmtcdn.com/bd735e8cff9011e8a6110242ac110003.jpg?&output-quality=75&downsize=910:612&crop=910:612;0,24&output-format=jpg"/>
+        <h3>Ginger Goa Panjim</h3>
+        <p>Price per room: RS. 3700</p>
+        <p>AC:true</p>
+        <p>Rating:3.8</p>
+        <button class="book">BOOK NOW</button>
+      </div>
+      <div class="hotel">
+        <img src="https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/201810091116205895-2f76a754ca5e11e899df0a5d19c43e10.jpg?&output-quality=75&downsize=910:612&crop=910:612;4,0&output-format=jpg&downsize=821:550&crop=821:550"/>
+        <h3>ITC Grand Goa - A Luxury Collection Resort</h3>
+        <p>Price per room: RS. 1200</p>
+        <p>AC:false</p>
+        <p>Rating:4.5</p>
+        <button class="book">BOOK NOW</button>
+      </div>
+      <div class="hotel">
+        <img src="https://r1imghtlak.mmtcdn.com/57bc01342e1f11ea930d0242ac110004.jpg?&output-quality=75&downsize=910:612&crop=910:612;0,59&output-format=jpg&downsize=821:550&crop=821:550"/>
+        <h3>Caravela Beach Resort</h3>
+        <p>Price per room: RS. 2800</p>
+        <p>AC:true</p>
+        <p>Rating:4</p>
+        <button class="book">BOOK NOW</button>
+      </div>
+      <div class="hotel">
+        <img src="https://r1imghtlak.mmtcdn.com/071f7230bc0911e884a00aceac5c031a.jpg?&output-quality=75&downsize=910:612&crop=910:612;157,0&output-format=jpg&downsize=821:550&crop=821:550"/>
+        <h3>The Avenue,Calangute</h3>
+        <p>Price per room: RS. 1600</p>
+        <p>AC:false</p>
+        <p>Rating:4.3</p>
+        <button class="book">BOOK NOW</button>
+      </div>
+      <div class="hotel">
+        <img src="https://r1imghtlak.mmtcdn.com/084be002670e11e492025ee5da2daa2a.jfif?&output-quality=75&output-format=jpg&downsize=821:550&crop=821:550"/>
+        <h3>Phoenix Park Inn by Radisson</h3>
+        <p>Price per room: RS. 1800</p>
+        <p>AC:false</p>
+        <p>Rating:4</p>
+        <button class="book">BOOK NOW</button>
+      </div>
+      <div class="hotel">
+        <img src="https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/201810091116205895-109499d6ca5e11e8a0180281517d0dd4.jpg?&output-quality=75&downsize=910:612&crop=910:612;4,0&output-format=jpg&downsize=821:550&crop=821:550"/>
+        <h3>ITC Grand Goa - A Luxury Collection Resort</h3>
+        <p>Price per room: RS. 1200</p>
+        <p>AC:false</p>
+        <p>Rating:4.5</p>
+        <button class="book">BOOK NOW</button>
+      </div>
+      <div class="hotel">
+        <img src="https://r1imghtlak.mmtcdn.com/10f8eab475b711e7a8fd0a209fbd0127.jpg?&output-quality=75&downsize=910:612&crop=910:612;141,0&output-format=jpg&downsize=821:550&crop=821:550"/>
+        <h3>SinQ Beach Resort</h3>
+        <p>Price per room: RS. 1500</p>
+        <p>AC:true</p>
+        <p>Rating:4.1</p>
+        <button class="book">BOOK NOW</button>
+      </div>
+      <div class="hotel">
+        <img src="https://r1imghtlak.mmtcdn.com/5dbd0f269a0d11e8b73802a895e77b78.jpg?&output-quality=75&downsize=910:612&crop=910:612;25,0&output-format=jpg&downsize=821:550&crop=821:550"/>
+        <h3>SinQ Prive</h3>
+        <p>Price per room: RS. 1200</p>
+        <p>AC:true</p>
+        <p>Rating:4.2</p>
+        <button class="book">BOOK NOW</button>
+      </div>
+      <div class="hotel">
+        <img src="https://r1imghtlak.mmtcdn.com/a0a6699e720a11e7a88f025f77df004f.jpg?&output-quality=75&downsize=910:612&crop=910:612;4,0&output-format=jpg&downsize=821:550&crop=821:550"/>
+        <h3>Estrela Do Mar Beach Resort - A Beach Property</h3>
+        <p>Price per room: RS. 1000</p>
+        <p>AC:true</p>
+        <p>Rating:3.9</p>
+        <button class="book">BOOK NOW</button>
+      </div>
+      <div class="hotel">
+        <img src="https://r1imghtlak.mmtcdn.com/a0a6699e720a11e7a88f025f77df004f.jpg?&output-quality=75&downsize=910:612&crop=910:612;4,0&output-format=jpg&downsize=821:550&crop=821:550"/>
+        <h3>SinQ The Party Hotel (No Stags Allowed)</h3>
+        <p>Price per room: RS. 1900</p>
+        <p>AC:false</p>
+        <p>Rating:4</p>
+        <button class="book">BOOK NOW</button>
+      </div>
+      <div class="hotel">
+        <img src="https://r1imghtlak.mmtcdn.com/54fd6b0028af11ebbf8b0242ac110002.jpg?&output-quality=75&downsize=910:612&crop=910:612;0,35&output-format=jpg&downsize=821:550&crop=821:550"/>
+        <h3>Resort Terra Paraiso - A Beach Property</h3>
+        <p>Price per room: RS. 800</p>
+        <p>AC:false</p>
+        <p>Rating:3.8</p>
+        <button class="book">BOOK NOW</button>
+      </div>
+    </div>
+      <!-- - Append all fetched hotels inside div with id:- "hotels_list"
+ - Every hotel card will have id:-  "hotel"
+ - The book now button will have class as "book" -->
+ 
+   
+  </body>
+</html>
+
+<script src=".scripts/index.js"></script>
